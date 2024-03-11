@@ -1,17 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 13
+      <ion-img src="assets/logo/logo.png" alt="TejoMag | Informação para além das margens" style="max-width: 100px; padding: 10px;"></ion-img>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 12</ion-title>
     </ion-toolbar>
   </ion-header>
+  
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Grid of Posts -->
+  <ion-grid>
+    <ion-row>
+      <ion-item-divider>
+        <h3>Últimas notícias</h3>
+      </ion-item-divider>
+      <br>
+      <ion-row *ngFor="let post of artigos">
+        <ion-col size="auto" >
+          <img alt="{{ post.title.rendered }}" src="{{ post.jetpack_featured_media_url }}" style="max-width: 100px;" />
+        </ion-col >
+        <ion-col >
+          <div>{{ post.title.rendered }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" (click)="scrollToTop()">Scroll to Top</ion-button>
 </ion-content>

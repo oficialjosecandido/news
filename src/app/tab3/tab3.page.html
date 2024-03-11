@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <!-- Update the ion-searchbar to handle null and undefined values -->
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchPosts($event.detail?.value || '')"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchPosts($event.detail.value || '')"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
