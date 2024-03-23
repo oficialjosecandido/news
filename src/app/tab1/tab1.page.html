@@ -21,7 +21,7 @@
         <h3>Últimas notícias</h3>
       </ion-item-divider>
       <br>
-      <ion-row *ngFor="let post of artigos">
+      <ion-row *ngFor="let post of artigos" (click)="viewPostDetails(post)">
         <ion-col size="auto" >
           <img alt="{{ post.title.rendered }}" src="{{ post.jetpack_featured_media_url }}" style="max-width: 100px;" />
         </ion-col >

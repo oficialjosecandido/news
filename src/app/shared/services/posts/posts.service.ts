@@ -10,8 +10,11 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getPosts()  {
-    console.log('getPosts');
     return this.http.get<any[]>('https://tejomag.com/wp-json/wp/v2/posts')
+  }
+
+  getPostBySlug(slug: string) {
+    return this.http.get<any[]>('https://tejomag.com/wp-json/wp/v2/posts?slug='+ slug)
   }
 
   searchPosts(term: string): Observable<any[]> {

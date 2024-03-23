@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonContent } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { MockPostsService } from '../shared/services/posts/mock-posts.service';
 import { PostsService } from '../shared/services/posts/posts.service';
@@ -15,7 +15,7 @@ export class Tab1Page {
 
   artigos: any;
 
-  constructor(private mocPostsService: MockPostsService, private postService: PostsService) {}
+  constructor(private mocPostsService: MockPostsService, private postService: PostsService, private navCtrl: NavController) {}
 
   ngOnInit() {
     this.getArtigos();
@@ -27,6 +27,11 @@ export class Tab1Page {
       console.log(1111, posts);
       this.artigos = posts
     })
+  }
+
+  viewPostDetails(post: any) {
+    // Navigate to a new page and pass the post details
+    this.navCtrl.navigateForward('/post-details', { queryParams: { postSlug: post.slug } });
   }
 
   scrollToTop() {
