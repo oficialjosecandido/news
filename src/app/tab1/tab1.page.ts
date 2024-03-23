@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { IonContent, NavController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { MockPostsService } from '../shared/services/posts/mock-posts.service';
+import { PostsService } from '../shared/services/posts/posts.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +10,34 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  @ViewChild(IonContent)
+  content!: IonContent;
 
-  constructor() {}
+  artigos: any;
+
+  constructor(private mocPostsService: MockPostsService, private postService: PostsService, private navCtrl: NavController) {}
+
+  ngOnInit() {
+    this.getArtigos();
+  }
+
+  getArtigos() {
+    console.log('getArtigos');
+    this.postService.getPosts().subscribe((posts)=> {
+      console.log(1111, posts);
+      this.artigos = posts
+    })
+  }
+
+  viewPostDetails(post: any) {
+    // Navigate to a new page and pass the post details
+    this.navCtrl.navigateForward('/post-details', { queryParams: { postSlug: post.slug } });
+  }
+
+  scrollToTop() {
+    // Passing a duration to the method makes it so the scroll slowly
+    // goes to the top instead of instantly
+    this.content.scrollToTop(500);
+  }
 
 }

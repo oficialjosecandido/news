@@ -1,0 +1,37 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>post-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">post-details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Post Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <!-- Display featured image -->
+    <ion-img [src]="post?.jetpack_featured_media_url"></ion-img>
+    <ion-card-header>
+      <!-- Display post title -->
+      <ion-card-title>{{ post?.title.rendered }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Display post content -->
+      <div [innerHTML]="post?.content.rendered"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

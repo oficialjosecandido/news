@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <!-- Update the ion-searchbar to handle null and undefined values -->
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchPosts($event.detail?.value || '')"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchPosts($event.detail.value || '')"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +9,15 @@
 <ion-content [fullscreen]="true">
   <!-- Display search results here -->
   <ion-list>
-    <ion-item *ngFor="let post of (posts$ | async)">
-      {{ post.title }}
-    </ion-item>
+    <ion-card *ngFor="let post of (posts$ | async)">
+      <ion-img [src]="post.image"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ post.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ post.excerpt }}
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>
 
